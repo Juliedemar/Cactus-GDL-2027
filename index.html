@@ -1,13 +1,85 @@
 <!doctype html>
 <html lang="it">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Arrivare alla fine dei mondi</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;1,400&family=Oswald:wght@500;600&family=Newsreader:ital,opsz,wght@1,6..72,400&family=Righteous&display=swap">
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="js/confetti.browser.min.js"></script>
 <style>
+/* Font ospitati sul sito (niente Google Fonts): solo il set latino */
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/courier-prime-400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/courier-prime-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/hanken-grotesk-400-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/hanken-grotesk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/hanken-grotesk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/newsreader-400-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/oswald.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/oswald.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/righteous-400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 /* Layout: apertura in testo con pianeti in prospettiva; ogni libro è una cartuccia a sinistra e un gioco a destra; su telefono in colonna. */
 :root {
   --ink: #16141c; --ink-2: #26232f; --paper: #ecdcb9; --paper-2: #f5ead2;
@@ -295,6 +367,22 @@ button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 .mini-msg p.typing::after { content: "▌"; color: var(--magenta); animation: caret .7s steps(1) infinite; }
 @keyframes caret { 50% { opacity: 0; } }
 .mini-skip { position: absolute; z-index: 2; left: max(16px, env(safe-area-inset-left, 0px)); bottom: calc(10px + env(safe-area-inset-bottom, 0px)); color: var(--muted); }
+/* Intro della prima visita: iperspazio tra cactus, stelline e cuori */
+.intro { position: fixed; inset: 0; z-index: 34; background: #07060d; overflow: hidden; transition: opacity .9s ease; }
+.intro.out { opacity: 0; pointer-events: none; }
+.intro canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.intro-flash { position: absolute; inset: 0; background: #fff6dc; opacity: 0; pointer-events: none; }
+.intro-ui { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 22px; text-align: center; padding: 24px 16px; transition: opacity .6s ease, transform .9s ease; }
+.intro-ui.gone { opacity: 0; transform: scale(1.25); pointer-events: none; }
+.intro-kicker { margin: 0; display: inline-block; padding: 8px 18px 7px; border-radius: 999px; background: var(--magenta); color: var(--paper-2); font-family: var(--type); font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: 13px; line-height: 1.2; box-shadow: 0 0 0 2px #07060d, 0 0 0 3px rgba(245, 234, 210, .35); }
+.intro-title { margin: 0; font-family: var(--title); font-weight: 600; text-transform: uppercase; font-size: clamp(34px, 8vw, 76px); line-height: 1; color: var(--paper-2); text-shadow: 0 0 28px rgba(241, 194, 27, .35); max-width: 12em; text-wrap: balance; }
+.intro-go { font-family: var(--title); font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: clamp(17px, 2.4vw, 21px); line-height: 1; min-height: 0; padding: 17px 34px 16px; color: var(--ink); background: var(--yellow); border: 0; border-radius: 999px; box-shadow: 0 0 0 2px #07060d, 0 0 0 4px rgba(241, 194, 27, .55), 0 0 34px rgba(241, 194, 27, .45); cursor: pointer; animation: introPulse 2.4s ease-in-out infinite; transition: transform .15s ease, background-color .15s ease; }
+.intro-go:hover { background: #ffd84a; transform: scale(1.04); }
+.intro-go:active { transform: scale(.97); }
+.intro-go:focus-visible { outline: 2px solid var(--paper-2); outline-offset: 6px; }
+@keyframes introPulse { 50% { box-shadow: 0 0 0 2px #07060d, 0 0 0 6px rgba(241, 194, 27, .3), 0 0 56px rgba(241, 194, 27, .6); } }
+.intro-skip { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+.signal.over-intro { background: rgba(7, 6, 13, .55); }
 .signal { position: fixed; inset: 0; z-index: 35; background: rgba(17, 16, 23, .95); display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; justify-items: center; overflow-y: auto; gap: 18px; text-align: center; padding-block: 24px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .signal h2 { font-family: var(--display); font-weight: 400; font-size: clamp(30px, 7.4vw, 46px); line-height: 1.06; color: var(--yellow); margin: 0; max-width: 13em; text-wrap: balance; }
 .signal p { margin: 0; color: var(--paper); max-width: 34em; }
@@ -350,6 +438,12 @@ button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 .bc-found { position: absolute; left: 16px; right: 110px; bottom: 18px; margin: 0; padding: 6px 8px; background: var(--yellow); color: var(--ink); font-family: var(--type); font-weight: 700; font-size: 13px; line-height: 1.25; }
 footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 2px solid var(--ink-2); padding-top: 12px; }
 footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
+.privacy { display: block; margin-top: 18px; }
+.privacy summary { cursor: pointer; color: var(--muted); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; width: max-content; padding: 6px 0; }
+.privacy summary:hover, .privacy[open] summary, .privacy details[open] summary { color: var(--paper-2); }
+.privacy-body { display: grid; gap: 10px; padding: 8px 0 4px; }
+.privacy-body p { font-size: 14px; line-height: 1.45; max-width: 68ch; }
+.privacy a { color: var(--yellow); }
 </style>
 
 <main class="wrap">
@@ -464,8 +558,18 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
     <div class="relics-grid" id="relicsGrid"></div>
   </section>
 
-  <footer id="pageFoot">
-    <p>Prototipo. I progressi restano in questo browser.</p>
+  <footer id="pageFoot" class="privacy">
+    <details>
+      <summary>Privacy e dati</summary>
+      <div class="privacy-body">
+        <p>Questo sito non raccoglie, non invia e non conserva sui propri server nessun dato personale. Non usa cookie, né strumenti di analisi o di profilazione.</p>
+        <p>Il tuo nome da esploratore, i progressi, i voti, il razzo scelto e la preferenza dei suoni restano solo nella memoria locale del tuo browser (localStorage), sul tuo dispositivo. Servono unicamente a far funzionare il gioco e a farti ritrovare il viaggio quando torni. Nessuno può vederli, nemmeno io.</p>
+        <p>Per questo i progressi non passano da un dispositivo all'altro, né da un browser all'altro: se cambi telefono o computer, usi la navigazione in incognito o cancelli i dati del sito, il viaggio ricomincia da capo. Puoi cancellarli quando vuoi con "Resetta il viaggio" o dalle impostazioni del browser.</p>
+        <p>Le story che scarichi vengono create nel tuo browser e salvate solo sul tuo dispositivo: condividerle è una tua scelta.</p>
+        <p>Font e librerie sono ospitati sul sito stesso, quindi la pagina non si collega a servizi esterni. Il sito è ospitato su GitHub Pages (GitHub Inc.), che come ogni servizio di hosting può registrare l'indirizzo IP dei visitatori per motivi tecnici e di sicurezza (<a href="https://docs.github.com/it/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">informativa di GitHub</a>).</p>
+        <p>Per domande scrivimi su Instagram: <a href="https://www.instagram.com/julie.demar/" target="_blank" rel="noopener">@julie.demar</a>.</p>
+      </div>
+    </details>
   </footer>
 </main>
 
@@ -473,6 +577,17 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
   <h2 id="nameTitle">Come ti chiami, esploratore?</h2>
   <p>Il tuo nome resterà sul viaggio e sul vaso d'arrivo.</p>
   <form class="name-form" id="nameForm"><input id="nameInput" maxlength="24" autocomplete="nickname" aria-label="Nome esploratore" placeholder="Il tuo nome"><button class="btn" type="submit">Inizia il viaggio</button></form>
+</div>
+
+<div class="intro" id="intro" hidden>
+  <canvas id="introCv" aria-hidden="true"></canvas>
+  <div class="intro-flash" id="introFlash"></div>
+  <div class="intro-ui" id="introUi">
+    <p class="intro-kicker">GDL 2027 di Julie Demar</p>
+    <h1 class="intro-title">Arrivare alla fine dei mondi</h1>
+    <button class="btn intro-go" id="introGo" type="button">Partecipa al GDL</button>
+  </div>
+  <button class="link intro-skip" id="introSkip" type="button">Salta</button>
 </div>
 
 <div class="signal" id="homeDlg" role="dialog" aria-modal="true" aria-labelledby="homeTitle" hidden>
@@ -705,6 +820,12 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
       lfo.start(t); lfo.stop(t + d + .05);
       notes([1568, 2093, 2637], .1, .45, { type: "sine", vol: .05, at: .35 });
     },
+    warp: function () {
+      hiss(3.4, { kind: "lowpass", from: 140, to: 5200, vol: .32, q: 2 });
+      tone(55, 3.2, { type: "sawtooth", to: 330, vol: .07 });
+      tone(82, 3.2, { type: "triangle", to: 495, vol: .06 });
+    },
+    arrive: function () { notes([523, 659, 784, 1047, 1319], .09, .9, { type: "sine", vol: .07 }); hiss(1.4, { from: 4000, to: 300, vol: .08 }); },
     reset: function () { tone(880, .6, { to: 60, vol: .08 }); },
     applause: function () {
       for (let i = 0; i < 70; i++) { const at = Math.pow(Math.random(), 1.6) * 2.6; hiss(.05, { at: at, from: 900 + Math.random() * 2200, q: 1.4, vol: .22 * (1 - at / 3) }); }
@@ -1409,7 +1530,7 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
   function render() {
     const inTitle = view === "title", inBook = view === "book", b = book();
     if (!inTitle) clearMeteors();
-    $("titleView").hidden = !inTitle; $("masthead").hidden = inTitle; $("pageFoot").hidden = inTitle;
+    $("titleView").hidden = !inTitle; $("masthead").hidden = inTitle;
     $("layout").hidden = !inBook; $("lockedView").hidden = view !== "locked";
     $("issueN").textContent = b.issue; $("issueM").textContent = b.months;
     paintPlanets();
@@ -2373,9 +2494,10 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
     }
     disarmReset();
     sfx("reset");
-    st.books = blank().books; st.done = false; st.found = []; paintRelics();
-    save();
+    st.books = blank().books; st.done = false; st.found = []; st.name = ""; paintRelics();
+    save(); paintExplorer();
     goTitle();
+    intro.open();
   });
   /* Chi non vuole leggere tutti i libri può far apparire la Terra e tornare a casa */
   $("btnDone").addEventListener("click", function () {
@@ -2573,15 +2695,98 @@ footer p { margin: 0; color: var(--muted); max-width: 60ch; font-size: 15px; }
     e.preventDefault();
     const v = $("nameInput").value.trim().slice(0, 24);
     if (!v) { $("nameInput").focus(); return; }
-    st.name = v; save(); paintExplorer(); $("nameDlg").hidden = true; sfx("select");
+    st.name = v; save(); paintExplorer(); $("nameDlg").hidden = true; sfx("select"); intro.close();
   });
   $("btnRename").addEventListener("click", openNameDlg);
   $("homeYes").addEventListener("click", function () { $("homeDlg").hidden = true; playFilm(); });
   $("homeNo").addEventListener("click", function () { $("homeDlg").hidden = true; });
   $("btnStories").addEventListener("click", openStories);
   $("storiesClose").addEventListener("click", function () { cancelAnimationFrame(storyRaf); $("stories").hidden = true; });
+  /* ---------- Intro: iperspazio tra cactus, stelline e cuori ---------- */
+  const intro = (function () {
+    const box = $("intro"), cv = $("introCv"), ctx = cv.getContext("2d");
+    let W = 0, H = 0, dpr = 1, raf = 0, last = 0, speed = .12, target = .12, parts = [], on = false;
+    const HEARTS = ["#b0265a", "#e9806e", "#d8392e"], STARS = ["#f1c21b", "#fff3b0", "#9fd0c5"];
+    function size() { dpr = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    function spawn(p, far) {
+      const r = Math.random();
+      p.kind = r < .66 ? "dot" : r < .8 ? "star" : r < .9 ? "heart" : "cactus";
+      const a = Math.random() * Math.PI * 2, d = .08 + Math.random() * 1.1;
+      p.x = Math.cos(a) * d; p.y = Math.sin(a) * d; p.z = far ? 1 : .05 + Math.random() * .95; p.pz = p.z;
+      p.c = p.kind === "heart" ? HEARTS[Math.random() * 3 | 0] : p.kind === "star" ? STARS[Math.random() * 3 | 0] : "#f5ead2";
+      p.rot = (Math.random() - .5) * .8; p.spin = (Math.random() - .5) * 1.5; p.s = .7 + Math.random() * .6;
+      return p;
+    }
+    function star(s) { ctx.beginPath(); for (let i = 0; i < 8; i++) { const r = i % 2 ? s * .28 : s, a = i * Math.PI / 4; ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r); } ctx.closePath(); ctx.fill(); }
+    function heart(s) { ctx.beginPath(); ctx.moveTo(0, s * .9); ctx.bezierCurveTo(-s * 1.4, 0, -s * .7, -s * 1.1, 0, -s * .35); ctx.bezierCurveTo(s * .7, -s * 1.1, s * 1.4, 0, 0, s * .9); ctx.fill(); }
+    function cactus(s) {
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
+      const arms = function () { ctx.beginPath(); ctx.moveTo(0, s * .25); ctx.lineTo(-s * .55, s * .25); ctx.lineTo(-s * .55, -s * .35); ctx.moveTo(0, -s * .05); ctx.lineTo(s * .55, -s * .05); ctx.lineTo(s * .55, -s * .7); ctx.stroke(); };
+      const trunk = function () { ctx.beginPath(); ctx.moveTo(0, -s); ctx.lineTo(0, s); ctx.stroke(); };
+      ctx.strokeStyle = "#16141c"; ctx.lineWidth = s * .62; trunk(); ctx.lineWidth = s * .42; arms();
+      ctx.strokeStyle = "#3f9b62"; ctx.lineWidth = s * .26; arms(); ctx.lineWidth = s * .44; trunk();
+      ctx.strokeStyle = "#2c7347"; ctx.lineWidth = Math.max(1, s * .05); ctx.beginPath(); ctx.moveTo(-s * .1, -s * .8); ctx.lineTo(-s * .1, s * .8); ctx.moveTo(s * .1, -s * .8); ctx.lineTo(s * .1, s * .8); ctx.stroke();
+    }
+    function frame(t) {
+      const dt = Math.min(.05, (t - (last || t)) / 1000); last = t;
+      speed += (target - speed) * Math.min(1, dt * 2.2);
+      const cx = W / 2, cy = H / 2, f = Math.min(W, H) * .55, warp = Math.min(1, speed / 2.4);
+      ctx.fillStyle = "rgba(7, 6, 13, " + (.85 - warp * .55) + ")"; ctx.fillRect(0, 0, W, H);
+      if (warp > .05) { const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(W, H) * .6); g.addColorStop(0, "rgba(241, 194, 27, " + warp * .18 + ")"); g.addColorStop(.35, "rgba(107, 79, 142, " + warp * .14 + ")"); g.addColorStop(1, "rgba(7, 6, 13, 0)"); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H); }
+      parts.forEach(function (p) {
+        p.pz = p.z; p.z -= speed * dt * .5; p.rot += p.spin * dt;
+        if (p.z <= .02) { spawn(p, true); return; }
+        const x = cx + p.x / p.z * f, y = cy + p.y / p.z * f;
+        if (x < -80 || x > W + 80 || y < -80 || y > H + 80) { spawn(p, true); return; }
+        const tz = Math.min(1, p.z + speed * .045), tx = cx + p.x / tz * f, ty = cy + p.y / tz * f, near = 1 - p.z;
+        ctx.globalAlpha = Math.min(1, near * 1.6);
+        if (speed > .3) { ctx.strokeStyle = p.c; ctx.lineWidth = Math.max(.6, near * (p.kind === "dot" ? 2.4 : 3.4)); ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke(); }
+        if (p.kind === "dot") { ctx.fillStyle = p.c; ctx.fillRect(x - near, y - near, 1 + near * 2, 1 + near * 2); }
+        else {
+          const s = Math.max(2, (4 + near * near * 26) * p.s);
+          ctx.save(); ctx.translate(x, y); ctx.rotate(p.rot); ctx.fillStyle = p.c;
+          if (p.kind === "star") star(s); else if (p.kind === "heart") heart(s * .8); else cactus(s * .9);
+          ctx.restore();
+        }
+        ctx.globalAlpha = 1;
+      });
+      if (on) raf = requestAnimationFrame(frame);
+    }
+    function open() {
+      if (on) return;
+      on = true; box.hidden = false; box.classList.remove("out"); $("introUi").classList.remove("gone"); $("introSkip").hidden = false;
+      size(); parts = []; for (let i = 0; i < (W < 600 ? 260 : 420); i++) parts.push(spawn({}, false));
+      speed = target = .12; last = 0; ctx.fillStyle = "#07060d"; ctx.fillRect(0, 0, W, H);
+      cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
+    }
+    function toName() {
+      $("introSkip").hidden = true; target = .22;
+      $("nameDlg").classList.add("over-intro"); openNameDlg();
+    }
+    function engage() {
+      unlockAudio(); sfx("rumble"); $("introGo").disabled = true;
+      $("introUi").classList.add("gone");
+      setTimeout(function () { target = 3.2; sfx("warp"); }, 450);
+      setTimeout(function () { sfx("whoosh"); }, 1700);
+      setTimeout(function () {
+        const fl = $("introFlash"); fl.style.transition = "opacity .25s ease-in"; fl.style.opacity = ".9";
+        setTimeout(function () { target = .22; speed = .5; sfx("arrive"); fl.style.transition = "opacity 1.2s ease-out"; fl.style.opacity = "0"; }, 260);
+        setTimeout(function () { $("introGo").disabled = false; toName(); }, 900);
+      }, 3700);
+    }
+    function close() {
+      if (!on) return;
+      $("nameDlg").classList.remove("over-intro"); box.classList.add("out");
+      setTimeout(function () { on = false; cancelAnimationFrame(raf); box.hidden = true; }, 950);
+    }
+    $("introGo").addEventListener("click", engage);
+    $("introSkip").addEventListener("click", function () { unlockAudio(); toName(); $("introUi").classList.add("gone"); });
+    window.addEventListener("resize", function () { if (on) size(); });
+    return { open: open, close: close };
+  })();
+
   paintExplorer();
-  if (!st.name) openNameDlg();
+  if (!st.name) intro.open();
 
   paintShips();
   render();
